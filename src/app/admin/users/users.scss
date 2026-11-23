@@ -1,0 +1,353 @@
+
+
+
+.users-page {
+  min-height: calc(100vh - 68px);
+  padding: 32px;
+  background: #F3F4F8;
+  color: #1F2430;
+}
+
+/* Page heading */
+
+.users-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1F2430;
+    margin: 5px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #5B6170;
+    margin: 0;
+  }
+}
+
+.section-label {
+  color: #3B4FD8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+/* Add user button */
+
+.add-user-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 17px;
+  background: #3B4FD8;
+  color: #FFFFFF;
+  border: 1px solid #3B4FD8;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  span {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &:hover {
+    background: #3042C0;
+  }
+}
+
+/* Users card */
+
+.users-card {
+  background: #FFFFFF;
+  border: 1px solid #DADDE6;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 3px 12px rgba(31, 36, 48, 0.04);
+}
+
+.table-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+
+  h2 {
+    color: #1F2430;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.user-count {
+  color: #5B6170;
+  background: #F3F4F8;
+  border: 1px solid #DADDE6;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Table */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th {
+    background: #F3F4F8;
+    color: #5B6170;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 14px 16px;
+    border-bottom: 1px solid #DADDE6;
+  }
+
+  td {
+    color: #5B6170;
+    font-size: 14px;
+    padding: 15px 16px;
+    border-bottom: 1px solid #E8EAF0;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: #FAFAFC;
+  }
+}
+
+/* User name and avatar */
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  strong {
+    color: #1F2430;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.employee {
+  background: #E8EBFC;
+  color: #3B4FD8;
+}
+
+.manager {
+  background: #FFF2D8;
+  color: #956000;
+}
+
+.admin {
+  background: #E6F4EA;
+  color: #16834A;
+}
+
+/* Status badges */
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.active {
+  background: #E6F4EA;
+  color: #16834A;
+}
+
+.inactive {
+  background: #F1F2F5;
+  color: #697180;
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .users-page {
+    padding: 22px 15px;
+  }
+
+  .users-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .users-card {
+    padding: 15px;
+  }
+
+  table th,
+  table td {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+
+  .user-name {
+    gap: 7px;
+  }
+
+  .user-name strong {
+    font-size: 12px;
+  }
+}
+
+
+
+/* Add User Modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 25, 40, 0.55);
+  backdrop-filter: blur(2px);
+}
+
+.add-user-modal {
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid #DADDE6;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(20, 25, 40, 0.2);
+  color: #1F2430;
+
+  h2 {
+    margin: 0 0 8px;
+    color: #1F2430;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 24px;
+    color: #5B6170;
+    font-size: 14px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  label {
+    display: block;
+    margin-top: 8px;
+    color: #1F2430;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  input,
+  select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    margin: 0 0 8px;
+    border: 1px solid #DADDE6;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #1F2430;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #3B4FD8;
+    box-shadow: 0 0 0 3px rgba(59, 79, 216, 0.12);
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cancel-btn,
+.modal-actions .add-user-btn {
+  min-height: 42px;
+  padding: 0 19px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #FFFFFF;
+  color: #5B6170;
+  border: 1px solid #DADDE6;
+}
+
+.cancel-btn:hover {
+  background: #F3F4F8;
+}
+
+.modal-actions .add-user-btn {
+  background: #3B4FD8;
+  color: #FFFFFF;
+  border: 1px solid #3B4FD8;
+}
+
+.modal-actions .add-user-btn:hover {
+  background: #3042C0;
+}
+
+@media (max-width: 480px) {
+  .add-user-modal {
+    padding: 22px;
+  }
+
+  .modal-actions {
+    flex-wrap: wrap;
+  }
+}

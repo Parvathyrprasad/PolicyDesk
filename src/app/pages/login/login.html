@@ -1,0 +1,132 @@
+
+<div class="login-page">
+
+  <div class="login-background-glow"></div>
+
+  <div class="login-card">
+
+    <!-- Brand -->
+    <div class="brand">
+      <div class="brand-icon">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="30" height="30" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor"
+          stroke-width="1.8" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+      </div>
+
+      <div class="brand-text">
+        <h1>PolicyDesk</h1>
+        <span>INSURANCE MANAGEMENT</span>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="login-heading">
+      <span class="welcome-label">WELCOME BACK</span>
+      <h2>Sign in to PolicyDesk</h2>
+      <p class="subtitle">Choose your demo account to continue</p>
+    </div>
+
+    <!-- Demo accounts -->
+    <div class="account-list">
+
+      @for (user of demoUsers; track user.id) {
+
+        <button
+          class="account-button"
+          type="button"
+          (click)="login(user.id)"
+        >
+
+          <div class="avatar"
+            [class.employee-avatar]="user.role === 'employee'"
+            [class.manager-avatar]="user.role === 'manager'"
+            [class.admin-avatar]="user.role === 'admin'">
+
+            @if (user.role === 'employee') {
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="23" height="23" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            }
+
+            @if (user.role === 'manager') {
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="23" height="23" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="7" width="18" height="14" rx="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            }
+
+            @if (user.role === 'admin') {
+              <svg xmlns="http://www.w3.org/2000/svg"
+                width="23" height="23" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            }
+
+          </div>
+
+          <div class="account-info">
+
+            <strong>
+              Login as
+              {{ user.role === 'employee'
+                ? 'Employee'
+                : user.role === 'manager'
+                  ? 'Manager'
+                  : 'Admin' }}
+              {{ user.name }}
+            </strong>
+
+            <span>{{ user.email }}</span>
+
+          </div>
+
+          <span class="arrow">→</span>
+
+        </button>
+
+      }
+
+    </div>
+
+    <!-- Return URL note -->
+    <div class="login-note">
+      <svg xmlns="http://www.w3.org/2000/svg"
+        width="17" height="17" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor"
+        stroke-width="1.8" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4"/>
+        <path d="M12 8h.01"/>
+      </svg>
+
+      <span>You will return to the page you requested</span>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>PolicyDesk</span>
+      <span class="footer-divider">·</span>
+      <span>Design & Route Guards</span>
+    </div>
+
+  </div>
+</div>

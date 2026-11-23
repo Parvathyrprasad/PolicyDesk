@@ -1,0 +1,133 @@
+
+<app-header />
+
+<main class="profile-page">
+  <div class="page-heading">
+    <div>
+      <span class="page-label">ACCOUNT SETTINGS</span>
+      <h1>Edit Profile</h1>
+      <p>Manage your personal information and account details.</p>
+    </div>
+
+    @if (isDirty) {
+      <span class="unsaved-badge">
+        <span class="status-dot"></span>
+        Unsaved changes
+      </span>
+    }
+  </div>
+
+  <section class="profile-card">
+    <div class="card-heading">
+      <div class="profile-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+        </svg>
+      </div>
+
+      <div>
+        <h2>Personal Information</h2>
+        <p>Update the information associated with your account.</p>
+      </div>
+    </div>
+
+    <div class="card-divider"></div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Enter your full name"
+        >
+
+        @if (profileForm.controls.name.touched && profileForm.controls.name.invalid) {
+          <small class="error-message">Full name is required.</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone number</label>
+        <input
+          id="phone"
+          type="text"
+          formControlName="phone"
+          placeholder="Enter your phone number"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input
+          id="department"
+          type="text"
+          formControlName="department"
+          placeholder="Enter your department"
+        >
+      </div>
+
+      @if (successMessage) {
+        <div class="success-message" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 12 4 4L19 6"></path>
+          </svg>
+          {{ successMessage }}
+        </div>
+      }
+
+      <div class="form-actions">
+        <button type="button" class="cancel-btn" (click)="cancel()">
+          Cancel
+        </button>
+
+        <button type="submit" class="save-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"></path>
+            <path d="M17 21v-8H7v8"></path>
+            <path d="M7 3v5h8"></path>
+          </svg>
+          Save Changes
+        </button>
+      </div>
+    </form>
+  </section>
+</main>
+
+@if (showLeaveDialog) {
+  <div class="modal-overlay">
+    <div
+      class="confirm-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dialog-title"
+    >
+      <div class="dialog-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 9v4"></path>
+          <path d="M12 17h.01"></path>
+          <path d="M10.3 3.9 1.8 18.2A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0Z"></path>
+        </svg>
+      </div>
+
+      <h2 id="dialog-title">Leave without saving?</h2>
+      <p>Your changes to this profile will be lost. Are you sure you want to leave?</p>
+
+      <div class="dialog-actions">
+        <button type="button" class="stay-btn" (click)="stay()">
+          Stay
+        </button>
+
+        <button type="button" class="leave-btn" (click)="leave()">
+          Leave
+        </button>
+      </div>
+    </div>
+  </div>
+}
